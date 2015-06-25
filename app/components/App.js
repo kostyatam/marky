@@ -1,6 +1,7 @@
 var React = require('react')
 var showdown = require('showdown')
 var converter = new showdown.Converter()
+var Result = require('./result')
 
 
 module.exports = React.createClass({
@@ -17,10 +18,9 @@ module.exports = React.createClass({
     render: function () {
         return (
             <div>
-                <textarea onKeyUp={this.marked} />
-                <div dangerouslySetInnerHTML={{__html: this.state.resultHtml}}></div>
+                <textarea onChange={this.marked} />
+                <Result htmlString={this.state.resultHtml} />
             </div>
         )
     }
 })
-

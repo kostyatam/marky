@@ -9,6 +9,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "jsx-loader": "^0.13.2"
+    "webpack": "latest",
+    "react": "^0.13.3",
+    "showdown": "latest",
+    "to-markdown": "latest",
+    "jsx-loader": "^0.13.2",
+    "webpack-dev-server": "latest"
   }
 }

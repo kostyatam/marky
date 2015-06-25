@@ -1,26 +1,29 @@
-var React = require('react')
-var showdown = require('showdown')
-var converter = new showdown.Converter()
-
+var React = require('react'),
+    Img = require('./imgs')
 
 module.exports = React.createClass({
     getInitialState: function() {
-        return {count: converter.makeHtml('')}
-    },
-    marked: function (e) {
-        e.stopPropagation()
-        var el = e.target,
-            resultHtml = converter.makeHtml(el.value)
-
-        this.setState({resultHtml: resultHtml})
+        return {resultHtml: {}}
     },
     render: function () {
         return (
-            <div>
-                <textarea onKeyUp={this.marked} />
-                <div dangerouslySetInnerHTML={{__html: this.state.resultHtml}}></div>
-            </div>
+            <div ref="field"></div>
         )
+    },
+    componentWillReceiveProps: function (nextProps) {
+        var wrapper =  document.createElement('section'),
+            imgs
+
+        wrapper.innerHTML = nextProps.htmlString
+        imgs = wrapper.getElementsByTagName('img')
+
+        for (var i = 0;i<imgs.length;i+=1) {
+            var node = document.createElement("div"),
+                src = imgs[i].src;
+            imgs[i].parentNode.replaceChild(node, imgs[i]);
+            React.render(<Img src={src} />, node);
+        }
+        React.findDOMNode(this.refs.field).innerHTML = wrapper.innerHTML
     }
 })
 

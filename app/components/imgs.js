@@ -1,3 +1,4 @@
+var React = require('react')
 module.exports = React.createClass({
 
     getInitialState: function(){
@@ -32,13 +33,4 @@ module.exports = React.createClass({
     }
 
 });
-var body = document.getElementsByTagName('body')[0]
-var imgs = document.getElementsByTagName('img')
-var node
-console.log('bar')
-for (var i = 0;i<imgs.length;i+=1) {
-    node = document.createElement("div")
-    body.replaceChild(node, imgs[i])
-    React.render(<Example src={imgs[i]} />, node);
-}
 
