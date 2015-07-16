@@ -7,23 +7,20 @@ module.exports = React.createClass({
     },
     render: function () {
         return (
-            <div ref="field"></div>
+            <div ref="field" dangerouslySetInnerHTML={{__html : this.props.htmlString}}></div>
         )
     },
-    componentWillReceiveProps: function (nextProps) {
-        var wrapper =  document.createElement('section'),
-            imgs
-
-        wrapper.innerHTML = nextProps.htmlString
+    componentDidUpdate: function () {
+        var wrapper =  React.findDOMNode(this.refs.field),
+            imgs, node, src;
         imgs = wrapper.getElementsByTagName('img')
 
         for (var i = 0;i<imgs.length;i+=1) {
-            var node = document.createElement("div"),
-                src = imgs[i].src;
+            node = document.createElement("div");
+            src = imgs[i].src;
             imgs[i].parentNode.replaceChild(node, imgs[i]);
             React.render(<Img src={src} />, node);
         }
-        React.findDOMNode(this.refs.field).innerHTML = wrapper.innerHTML
     }
 })
 

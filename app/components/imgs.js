@@ -29,7 +29,7 @@ module.exports = React.createClass({
 
         img.src = this.state.src
 
-        body.replaceChild(img, container)
+        container.parentNode.replaceChild(img, container)
     }
 
 });

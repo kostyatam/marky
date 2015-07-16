@@ -11,7 +11,7 @@
   "dependencies": {
     "webpack": "latest",
     "react": "^0.13.3",
-    "showdown": "latest",
+    "showdown": "../showdown",
     "to-markdown": "latest",
     "jsx-loader": "^0.13.2",
     "webpack-dev-server": "latest"
