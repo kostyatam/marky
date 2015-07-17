@@ -1,6 +1,10 @@
-var React = require('react')
-module.exports = React.createClass({
+var React = require('react'),
+    reflux = require('reflux'),
+    actions = require('../actions'),
+    stores = require('../stores');
 
+module.exports = React.createClass({
+    mixins: [reflux.connect(stores)],
     getInitialState: function(){
         return ({
             src: this.props.src || ''
@@ -11,7 +15,7 @@ module.exports = React.createClass({
     },
     ok: function () {
         if (!this.state.src) {return}
-        React.unmountComponentAtNode(this.getDOMNode().parentNode);
+        actions.toMarkdown();
     },
     render: function() {
         return (

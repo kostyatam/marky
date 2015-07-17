@@ -1,7 +1,7 @@
 var React = require('react')
 var showdown = require('showdown')
 var converter = new showdown.Converter()
-var Result = require('./result')
+var Result = require('./result');
 
 
 module.exports = React.createClass({

@@ -13,6 +13,7 @@
     "react": "^0.13.3",
     "showdown": "../showdown",
     "to-markdown": "latest",
+    "reflux":  "^0.2.9",
     "jsx-loader": "^0.13.2",
     "webpack-dev-server": "latest"
   }
